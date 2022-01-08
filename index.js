@@ -3,6 +3,12 @@ const express = require ('express');
 const app = express();
 const port = 8000;
 
+const CLIENT_ID = process.env.CLIENT_ID;
+const CLIENT_SECRET = process.env.CLIENT_SECRET;
+const REDIRECT_URL = process.env.REDIRECT_URL;
+
+
+
 //To check if client ID is being displayed on the console
 console.log(process.env.CLIENT_ID);
 
