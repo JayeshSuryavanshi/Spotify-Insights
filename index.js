@@ -21,10 +21,14 @@ app.get('/', (req, res) => {
     res.json(data);
 });
 
-app.get('/fantastic-generator', (req, res) => {
-    const {name, isFantastic} = req.query;
-    res.send('${name} is ${JSON.parse(isAwesome) ? really} awesome');
-})
+// app.get('/fantastic-generator', (req, res) => {
+//     const {name, isFantastic} = req.query;
+//     res.send('${name} is ${JSON.parse(isAwesome) ? really} awesome');
+// })
+
+app.get('/login', (req, res) => {
+    res.send('Test login to Spotify');
+});
 
 app.listen(port, () => {
     console.log('Express app listensing at http://localhost:${port}');
