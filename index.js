@@ -40,16 +40,24 @@ const stateKey = 'spotify_auth_state';
 //     res.send('${name} is ${JSON.parse(isAwesome) ? really} awesome');
 // })
 
-app.get('/login', (req, res) => {
+app.get('/login', function (req, res) {
+    const state = generateRandomString(16);
+    res.cookie(stateKey, state);
 
-    const queryParams = querystring.stringify({
-        client_id : CLIENT_ID,
-        response_type : 'code',
+    //application requests authorization
+    const scope =
+      'user-read-private user-read-email user-read-recently-played user-top-read user-follow-read user-follow-modify playlist-read-private playlist-read-collaborative playlist-modify-public';
+
+    res.redirect(
+      `https://accounts.spotify.com/authorize?${querystring.stringify({
+        response_type: 'code',
+        client_id: CLIENT_ID,
+        scope: scope,
         redirect_uri: REDIRECT_URI,
-    })
-    // res.send('Test login to Spotify');
-    res.redirect(`https://accounts.spotify.com/authorize?${queryParams}`);
-});
+        state: state,
+      })}`,
+    );
+  });
 
 app.get('/callback', (req, res) => {
     //callback functionality after the user logs into Spotify account
