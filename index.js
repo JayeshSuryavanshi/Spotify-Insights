@@ -23,6 +23,18 @@ app.get('/', (req, res) => {
     res.json(data);
 });
 
+
+const generateRandomString = length => {
+    let text = '';
+    const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    for (let i = 0; i < length; i++) {
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+    return text;
+  };
+  
+const stateKey = 'spotify_auth_state';
+
 // app.get('/fantastic-generator', (req, res) => {
 //     const {name, isFantastic} = req.query;
 //     res.send('${name} is ${JSON.parse(isAwesome) ? really} awesome');
@@ -36,7 +48,7 @@ app.get('/login', (req, res) => {
         redirect_uri: REDIRECT_URI,
     })
     // res.send('Test login to Spotify');
-    res.redirect(`https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&response_type=code&redirect_uri=${REDIRECT_URI}`);
+    res.redirect(`https://accounts.spotify.com/authorize?${queryParams}`);
 });
 
 app.get('/callback', (req, res) => {
