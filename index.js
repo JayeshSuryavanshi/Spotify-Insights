@@ -98,8 +98,8 @@ if (cluster.isMaster) {
   });
 
   app.get('/callback', function (req, res) {
-    // your application requests refresh and access tokens
-    // after checking the state parameter
+   
+    // After checking the state parameters, the application requests refresh and access tokens
 
     const code = req.query.code || null;
     const state = req.query.state || null;
