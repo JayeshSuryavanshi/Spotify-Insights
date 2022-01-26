@@ -192,6 +192,10 @@ if (cluster.isMaster) {
     response.sendFile(path.resolve(__dirname, '../client/public', 'index.html'));
   });
 
+  // app.listen(PORT, function () {
+  //   console.warn(`Node cluster worker ${process.pid}: listening on port ${PORT}`);
+  // });
+
   app.listen(PORT, function () {
     console.warn(`Node cluster worker ${process.pid}: listening on port ${PORT}`);
   });
