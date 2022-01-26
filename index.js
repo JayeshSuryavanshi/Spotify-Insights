@@ -169,6 +169,13 @@ if (cluster.isMaster) {
           Authorization: `Basic ${new Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString(
             'base64',
           )}`,
+        },
+        form: {
+          grant_type: 'refresh_token',
+          refresh_token,
+        },
+        json: true,
+      };
        
       
 
