@@ -163,6 +163,13 @@ if (cluster.isMaster) {
     app.get('/get_token, function (req, res) {
       // requesting access token from refresh token
       const refresh_token = req.query.refresh_token;
+      const authOptions = {
+        url: 'https://accounts.spotify.com/api/token',
+        headers: {
+          Authorization: `Basic ${new Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString(
+            'base64',
+          )}`,
+       
       
 
     request.post(authOptions, function (error, response, body) {
