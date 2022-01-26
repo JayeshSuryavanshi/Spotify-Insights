@@ -160,6 +160,11 @@ if (cluster.isMaster) {
       json: true,
     };
 
+    app.get('/get_token, function (req, res) {
+      // requesting access token from refresh token
+      const refresh_token = req.query.refresh_token;
+      
+
     request.post(authOptions, function (error, response, body) {
       if (!error && response.statusCode === 200) {
         const access_token = body.access_token;
